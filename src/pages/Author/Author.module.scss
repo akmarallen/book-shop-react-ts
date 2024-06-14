@@ -1,0 +1,24 @@
+.author__banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6F7D3;
+    height: 711px;
+    display: flex;
+    &__about{
+        margin: 150px 66px;
+        font-size: 24px;
+        & h3{
+            border-bottom: 1px solid;
+        }
+        & h1{
+            font-size: 56px;
+        }
+        & p{
+            font-size: 12px;
+        }
+        & button{
+            width: 361px;
+        }
+    }
+}

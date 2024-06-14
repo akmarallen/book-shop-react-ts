@@ -1,0 +1,68 @@
+.reviews {
+  height: 969px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  &__review {
+    width: 483px;
+    height: 604px;
+    border: 12px;
+    margin: 150px 50px;
+    position: relative;
+
+    &_txt {
+      width: 586px;
+      height: 284px;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      top: 93%;
+      left: 71%;
+      transform: translate(-50%, -50%);
+      -webkit-box-shadow: -21px -5px 0px -4px rgba(48, 203, 112, 1);
+      -moz-box-shadow: -21px -5px 0px -4px rgba(48, 203, 112, 1);
+      box-shadow: -21px -5px 0px -4px rgba(48, 203, 112, 1);
+      background-color: rgba(255, 255, 255, 0.999);
+      & p {
+        border-radius: 1px solid black;
+        margin: 20px;
+      }
+    }
+  }
+
+  &__testimonials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 150px;
+    & h2 {
+      color: #2f327d;
+      font-size: 56px;
+      & span {
+        margin-left: 5px;
+        color: #30bc30;
+      }
+      & p {
+        color: black;
+        font-size: 26px;
+      }
+    }
+    &_btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & button {
+        width: 384px;
+        height: 69px;
+        border-radius: 80px;
+        margin: -69px;
+      }
+    }
+  }
+}
