@@ -17,7 +17,7 @@ const Books = () => {
 
   useEffect(() => {
     dispatch(getBooks("test"));
-  }, []);
+  });
 
   return (
     <div className={styles.books}>
