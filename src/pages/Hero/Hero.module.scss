@@ -1,0 +1,94 @@
+@import "styles/vars.scss";
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__section {
+    display: flex;
+    margin-top: 80px;
+    gap: 85px;
+    &__about {
+      width: 50%;
+      & img {
+        margin-top: -150px;
+        margin-left: 78px;
+        width: 642px;
+        height: 515px;
+      }
+      & h1 {
+        color: $col-blue;
+        font-size: 56px;
+      }
+
+      &__info {
+        display: flex;
+        justify-content: start;
+        gap: 100px;
+        &:nth-child(1) {
+          margin-top: 40px;
+        }
+        &__btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          & button {
+            width: 230px;
+            height: 56px;
+          }
+          & h2 {
+            color: $col-gray;
+            font-size: 25px;
+            font-weight: 900;
+            width: 111px;
+            height: 93px;
+            &:nth-child(1) {
+              margin-top: 40px;
+            }
+          }
+        }
+      }
+    }
+
+    &__find {
+      width: 50%;
+      text-align: start;
+      & h1 {
+        color: $col-blue;
+        font-size: 56px;
+        margin-bottom: 80px;
+      }
+      & h5 {
+        font-size: 20px;
+        font-weight: 400;
+        color: $col-black;
+        margin-bottom: 76px;
+      }
+
+      &__search {
+        border: 1px solid $col-gray;
+        border-radius: 20px;
+        width: 576px;
+        height: 72px;
+        gap: 220px;
+        display: flex;
+        align-items: center;
+
+        & input {
+          outline: none;
+          border: none;
+          font-size: 16px;
+        }
+        & button {
+          height: 56px;
+          width: 138px;
+        }
+      }
+    }
+  }
+  &__swiper{
+    width: 100%;
+    
+  }
+}

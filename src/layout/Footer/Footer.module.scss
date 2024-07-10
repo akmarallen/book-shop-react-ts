@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  height: 492px;
+  color: white;
+  background-color: #0a142f;
+  padding: 50px 105px 103px 105px;
+  gap: 280px;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+    &_txt {
+      width: 274px;
+      justify-content: flex-start;
+    }
+
+    &_email {
+      border-bottom: 1px solid white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 22px 0;
+
+      & input {
+        outline: none;
+        background-color: transparent;
+        border: none;
+        color: white;
+      }
+
+      & h5 {
+        font-size: 15px;
+      }
+    }
+
+    & p {
+      font-size: 11px;
+    }
+
+    & button {
+      margin-top: 12px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__right {
+    display: flex;
+    padding-top: 90px;
+    flex: 1;
+    gap: 80px;
+
+    & div {
+      font-size: 12px;
+    }
+    &_contents {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      & li {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

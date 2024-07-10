@@ -1,0 +1,48 @@
+@import "styles/vars.scss";
+
+.books {
+  width: auto;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden; 
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $col-green;
+    width: 270px;
+    height: 300px;
+    border-radius: 8px;
+    color: #393d4a;
+    & img {
+      width: 185px;
+      height: 281px;
+      margin-top: -40px;
+    }
+  }
+  &__about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 270px;
+    height: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    & p {
+      color: rgba(57, 61, 74, 0.38);
+    }
+    & h3 {
+      color: #9747ff;
+    }
+  }
+  &__buttons {
+    width: 270px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

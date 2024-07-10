@@ -1,0 +1,59 @@
+@import "styles/vars.scss";
+
+.button {
+  &__primary {
+    width: 100px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: border-color 0.25s;
+
+    color: $col-green;
+    background-color: white;
+    border: 1px solid #30cb70;
+    &:hover {
+      background-color: #30cb70;
+      color: white;
+      font-weight: 700;
+    }
+  }
+  &__secondary {
+    color: white;
+    background-color: $col-green;
+    border: 1px solid transparent;
+    width: 100px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: border-color 0.25s;
+
+    &:hover {
+      background-color: white;
+      color: $col-green;
+      border-color: #30cb70;
+    }
+  }
+  &__cart {
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: border-color 0.25s;
+    color: $col-green;
+    background-color: white;
+    border: 1px solid #30cb70;
+    &:hover {
+      background-color: #30cb70;
+      color: white;
+      font-weight: 700;
+    }
+  }
+  &:hover {
+    -webkit-box-shadow: 0px 6.15px 147px -1.121px rgba(64, 169, 229, 0.3);
+    -moz-box-shadow: 0px 6.15px 147px -1.121px rgba(64, 169, 229, 0.3);
+    box-shadow: 0px 6.15px 147px -1.121px rgba(64, 169, 229, 0.3);
+  }
+}

@@ -1,0 +1,22 @@
+@import "styles/vars.scss";
+ul {
+  display: flex;
+  gap: 40px;
+
+  & li {
+    display: flex;
+    list-style: none;
+    width: 90px;
+    justify-content: center;
+    align-items: center;
+    & a {
+      color: $col-gray2;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    &:hover {
+      font-weight: 600;
+      color: $col-black;
+    }
+  }
+}
