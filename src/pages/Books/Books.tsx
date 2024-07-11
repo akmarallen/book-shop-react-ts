@@ -15,8 +15,6 @@ const Books = () => {
   const books = useSelector(selectBooks);
   const dispatch = useAppDispatch();
 
-  console.log(books, "books");
-
   useEffect(() => {
     dispatch(getBooks("programming"));
   }, [dispatch]);

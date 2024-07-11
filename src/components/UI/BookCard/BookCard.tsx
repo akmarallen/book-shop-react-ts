@@ -15,14 +15,11 @@ const BookCard: React.FC<Book> = ({ id, volumeInfo, saleInfo }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
 
-  // const cart = useSelector((state: RootState) => state.cart.cart);
-  // console.log(cart, "cart");
 
   const handleIncrement = () => {
     dispatch(incrementQuantity(id));
 
     setQuantity((quantity) => quantity + 1);
-    console.log(quantity, "hello");
   };
 
   const handleDecrement = () => {
@@ -34,7 +31,6 @@ const BookCard: React.FC<Book> = ({ id, volumeInfo, saleInfo }) => {
   const handleRemove = () => {
     dispatch(removeBook(id));
     setQuantity(0);
-    console.log(quantity, "hello");
   };
 
   return (
