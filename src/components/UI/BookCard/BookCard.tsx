@@ -4,29 +4,37 @@ import { Book } from "../../../redux/booksSlices/bookSlices";
 import Button from "components/UI/Button/Button";
 import iconDelete from "assets/icons/delete.svg";
 import { useDispatch } from "react-redux";
-import { decrementQuantity, incrementQuantity, removeItem } from "../../../redux/counterSlices/counterSlices";
-
+import {
+  decrementQuantity,
+  incrementQuantity,
+  removeBook,
+} from "../../../redux/counterSlices/counterSlices";
+// import { RootState } from "../../../redux/store";
 
 const BookCard: React.FC<Book> = ({ id, volumeInfo, saleInfo }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
 
-  // const cartItems = useSelector((state: RootState) => state.cart.cart);
-  
+  // const cart = useSelector((state: RootState) => state.cart.cart);
+  // console.log(cart, "cart");
+
   const handleIncrement = () => {
     dispatch(incrementQuantity(id));
-    setQuantity((prevQuantity) => prevQuantity + 1);
+
+    setQuantity((quantity) => quantity + 1);
+    console.log(quantity, "hello");
   };
 
   const handleDecrement = () => {
-    if (quantity > 0) {
+    if (quantity >0) {
       dispatch(decrementQuantity(id));
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
   const handleRemove = () => {
-    dispatch(removeItem(id));
+    dispatch(removeBook(id));
     setQuantity(0);
+    console.log(quantity, "hello");
   };
 
   return (
@@ -44,7 +52,7 @@ const BookCard: React.FC<Book> = ({ id, volumeInfo, saleInfo }) => {
         <Button variant="cart" onClick={handleIncrement}>
           +
         </Button>
-        <p>Count</p>
+        <p>{quantity}</p>
         <Button variant="cart" onClick={handleDecrement}>
           -
         </Button>

@@ -5,11 +5,13 @@ export const getBooks = createAsyncThunk(
   "books/getBooks",
   async (search?: string) => {
     try {
-      const response = await api.get("/books", { params: { q: search } });
-      console.log(response.data?.items, "api");
+      const response = await api.get("/volumes", { params: { q: search } });
+      // console.log(response.data?.item, "Akmaral");
       return response.data?.items;
     } catch (e) {
-      console.log(e, "error");
+      return e;
+      // console.log(e);
+      
     }
   }
 );

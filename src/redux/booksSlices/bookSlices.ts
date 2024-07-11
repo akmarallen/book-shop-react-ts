@@ -30,9 +30,10 @@ const booksSlice = createSlice({
 
     builder.addCase(getBooks.rejected, (state) => {
       state.isLoading = false;
+      console.log(state, "state");
+      
     });
   },
-
 });
 
 export default booksSlice;

@@ -15,9 +15,11 @@ const Books = () => {
   const books = useSelector(selectBooks);
   const dispatch = useAppDispatch();
 
+  console.log(books, "books");
+
   useEffect(() => {
-    dispatch(getBooks("test"));
-  });
+    dispatch(getBooks("programming"));
+  }, [dispatch]);
 
   return (
     <div className={styles.books}>
@@ -43,7 +45,7 @@ const Books = () => {
           modules={[Pagination]}
           className="mySwiper"
         >
-          {books?.map((book) => (
+          {books.map((book) => (
             <SwiperSlide key={book.id}>
               <BookCard {...book} />
             </SwiperSlide>
