@@ -8,7 +8,7 @@ const Blogs = () => {
     <div className={styles.ourblog}>
       <h1>Visit our Blogs</h1>
       <div className={styles.ourblog__blog}>
-        <div className={styles.ourblog__blog_box}>
+        <div className={styles.ourblog__blog__box}>
           <img src={first} alt="photo blog" />
           <h2>How innovation can bring change</h2>
           <p>
@@ -17,8 +17,8 @@ const Blogs = () => {
           </p>
           <Button>Read more</Button>
         </div>
-        <div className={styles.ourblog__blog_box}>
-          <img src={second} alt="photo blog 2" />
+        <div className={styles.ourblog__blog__box}>
+          <img src={second} alt="2-photo blog" />
           <h2>How innovation can bring change</h2>
           <p>
             How innovation can bring change Improving Efficiency: Innovation can

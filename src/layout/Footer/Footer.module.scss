@@ -1,44 +1,34 @@
-.container {
+@import "../../styles/vars.scss";
+
+.footer {
   display: flex;
-  height: 492px;
+  justify-content: space-between;
+  max-height: 492px;
+  padding: 100px;
+  line-height: 18px;
   color: white;
   background-color: #0a142f;
-  padding: 50px 105px 103px 105px;
-  gap: 280px;
 
   &__left {
-    display: flex;
-    flex-direction: column;
+    flex: 1;
     width: 300px;
+    margin-right: 280px;
 
-    &_txt {
-      width: 274px;
-      justify-content: flex-start;
-    }
-
-    &_email {
+    &__joinUs {
       border-bottom: 1px solid white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       padding: 22px 0;
-
-      & input {
-        outline: none;
-        background-color: transparent;
-        border: none;
-        color: white;
-      }
 
       & h5 {
         font-size: 15px;
       }
-    }
 
-    & p {
-      font-size: 11px;
+      & input {
+        outline: none;
+        color: white;
+        background-color: transparent;
+        border: none;
+      }
     }
-
     & button {
       margin-top: 12px;
       margin-bottom: 40px;
@@ -47,20 +37,19 @@
 
   &__right {
     display: flex;
-    padding-top: 90px;
+    padding-top: 30px;
     flex: 1;
     gap: 80px;
 
-    & div {
-      font-size: 12px;
-    }
-    &_contents {
-      display: flex;
-      flex-direction: column;
-      list-style: none;
-      padding: 0;
-      & li {
-        margin-bottom: 10px;
+    &__contents {
+      width: 100px;
+      line-height: 30px;
+      font-weight: 700;
+      &__list {
+        list-style: none;
+        font-weight: 400;
+        color: rgba($color: #ffffff, $alpha: 0.6);
+        padding: 0;
       }
     }
   }

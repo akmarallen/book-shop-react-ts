@@ -3,7 +3,7 @@ import Button from "components/UI/Button/Button";
 import MenuList from "components/UI/MenuList/MenuList";
 import { MENU_ITEMS } from "utils/constants";
 import styles from "./Header.module.scss";
-import CartBook from "components/UI/CartBook/CartBook";
+import SelectedBook from "components/UI/SelectedBook/SelectedBook";
 
 const Header = () => {
   return (
@@ -12,7 +12,7 @@ const Header = () => {
       <MenuList items={MENU_ITEMS} />
       <Button>Sign In</Button>
       <Button>Sign Up</Button>
-      <CartBook/>
+      <SelectedBook/>
     </div>
   );
 };

@@ -3,7 +3,8 @@ import styles from "./Hero.module.scss";
 import boy from "assets/images/read-boy.svg";
 import sale from "assets/images/banner.svg";
 import sale2 from "assets/images/banner-2.svg";
-import sale3 from "assets/images/banner-3.svg"
+import sale3 from "assets/images/banner-3.svg";
+import search from "assets/icons/search.svg";
 import whatsapp from "assets/icons/whatsapp-link.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -36,7 +37,7 @@ const Hero = () => {
 
           <div className={styles.hero__section__find__search}>
             <input placeholder="Find Your Book Here" />
-            <Button>Search</Button>
+            <img src={search} alt="search-btn" />
           </div>
           <img src={whatsapp} alt="WhatsApp Icon" />
         </div>

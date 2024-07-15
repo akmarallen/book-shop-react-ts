@@ -45,7 +45,7 @@ const Books = () => {
         >
           {books.map((book) => (
             <SwiperSlide key={book.id}>
-              <BookCard {...book} />
+              <BookCard book={book} />
             </SwiperSlide>
           ))}
         </Swiper>

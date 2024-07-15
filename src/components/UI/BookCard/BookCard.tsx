@@ -2,47 +2,56 @@ import React, { useState } from "react";
 import styles from "./BookCard.module.scss";
 import { Book } from "../../../redux/booksSlices/bookSlices";
 import Button from "components/UI/Button/Button";
-import iconDelete from "assets/icons/delete.svg";
 import { useDispatch } from "react-redux";
 import {
+  addToCart,
   decrementQuantity,
   incrementQuantity,
   removeBook,
 } from "../../../redux/counterSlices/counterSlices";
-// import { RootState } from "../../../redux/store";
 
-const BookCard: React.FC<Book> = ({ id, volumeInfo, saleInfo }) => {
+const BookCard: React.FC<{ book: Book }> = ({ book }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
 
-
   const handleIncrement = () => {
-    dispatch(incrementQuantity(id));
+    dispatch(incrementQuantity(book.id));
+
+    if (quantity === 0) {
+      dispatch(
+        addToCart({
+          id: book.id,
+          quantity: 1,
+          author: book.volumeInfo.authors?.[0] || "Unknown",
+          title: book.volumeInfo.title,
+          image: book.volumeInfo.imageLinks?.thumbnail || "",
+        })
+      );
+    }
 
     setQuantity((quantity) => quantity + 1);
   };
 
   const handleDecrement = () => {
-    if (quantity >0) {
-      dispatch(decrementQuantity(id));
+    if (quantity > 0) {
+      dispatch(decrementQuantity(book.id));
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
   const handleRemove = () => {
-    dispatch(removeBook(id));
+    dispatch(removeBook(book.id));
     setQuantity(0);
   };
 
   return (
-    <div className={styles.books} key={id}>
-      <div className={styles.books__item}>
-        <img src={volumeInfo.imageLinks?.thumbnail} alt="Book Photo" />
+    <div className={styles.books} key={book.id}>
+      <div className={styles.books__img}>
+        <img src={book.volumeInfo.imageLinks?.thumbnail} alt="Book Photo" />
       </div>
-      <div className={styles.books__about}>
-        <h2>{volumeInfo.title}</h2>
-        <h3>{volumeInfo.authors?.join(", ")}</h3>
-        <p>{saleInfo.country}</p>
-        <h3>{saleInfo.isEbook}</h3>
+      <div className={styles.books__details}>
+        <h3>{book.volumeInfo.authors?.[0]}</h3>
+        <p>{book.volumeInfo.publishedDate}</p>
+        <a href={book.accessInfo.webReaderLink}>link</a> <br />
       </div>
       <div className={styles.books__buttons}>
         <Button variant="cart" onClick={handleIncrement}>
@@ -52,7 +61,9 @@ const BookCard: React.FC<Book> = ({ id, volumeInfo, saleInfo }) => {
         <Button variant="cart" onClick={handleDecrement}>
           -
         </Button>
-        <img src={iconDelete} alt="delete" onClick={handleRemove} />
+      </div>
+      <div className={styles.books__delete} onClick={handleRemove}>
+        DELETE
       </div>
     </div>
   );

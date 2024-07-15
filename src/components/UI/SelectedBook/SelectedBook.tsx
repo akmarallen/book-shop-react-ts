@@ -1,13 +1,14 @@
+import styles from "./SelectedBook.module.scss";
 import cart from "assets/icons/cart.png";
-import styles from "./CartBook.module.scss";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
+import { selectedBooks } from "../../../redux/counterSlices/counterSlices";
 
-const CartBook = () => {
+const SelectedBook = () => {
   const [isActive, setIsActive] = useState(false);
 
-  const books = useSelector((state: RootState) => state.cart.cart);
+  const books = useSelector(selectedBooks);
+  console.log(books, "books");
 
   const toggleCart = () => {
     setIsActive(!isActive);
@@ -26,9 +27,11 @@ const CartBook = () => {
           {books.length > 0 ? (
             books.map((book) => (
               <li key={book.id} className={styles.cart__list__item}>
-                <div className={styles.cart__list__item_active}>
-                  <span>Quantity: {book.quantity}</span>
-                </div>
+                <ul className={styles.cart__list__item_active}>
+                  <li>
+                    <div>h3Author: {book.author}</div>
+                  </li>
+                </ul>
               </li>
             ))
           ) : (
@@ -39,4 +42,5 @@ const CartBook = () => {
     </div>
   );
 };
-export default CartBook;
+
+export default SelectedBook;

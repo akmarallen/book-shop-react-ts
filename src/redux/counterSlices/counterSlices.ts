@@ -1,15 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "redux/store";
 
-export interface CartBook {
+export interface ISelectedBooks {
   id: string;
   quantity: number;
+  author: string;
+  title: string;
+  image: string;
 }
 
-interface CartState {
-  cart: CartBook[];
+interface ISelectedState {
+  cart: ISelectedBooks[];
 }
 
-const initialState: CartState = {
+const initialState: ISelectedState = {
   cart: [],
 };
 
@@ -17,7 +21,7 @@ const counterSlices = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<CartBook>) => {
+    addToCart: (state, action: PayloadAction<ISelectedBooks>) => {
       const bookInCart = state.cart.find(
         (book) => book.id === action.payload.id
       );
@@ -26,6 +30,7 @@ const counterSlices = createSlice({
       } else {
         state.cart.push({ ...action.payload, quantity: 1 });
       }
+      // console.log(state.cart);
     },
     incrementQuantity: (state, action: PayloadAction<string>) => {
       const book = state.cart.find((book) => book.id === action.payload);
@@ -53,3 +58,4 @@ export default counterSlices;
 export const cartReducer = counterSlices.reducer;
 export const { addToCart, incrementQuantity, decrementQuantity, removeBook } =
   counterSlices.actions;
+export const selectedBooks = (state: RootState) => state.cart.cart;

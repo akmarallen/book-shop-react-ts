@@ -2,22 +2,41 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getBooks } from "./reducer";
 import { RootState } from "redux/store";
 
+type TSelectedBook = {
+  book: Book;
+  count: number;
+};
+
 type State = {
   books: Book[];
   isLoading: boolean;
   error: null;
+  selectedBooks: TSelectedBook[];
 };
 
 const initialState: State = {
   books: [],
   isLoading: false,
   error: null,
+  selectedBooks: [],
 };
 
 const booksSlice = createSlice({
   name: "books",
   initialState,
-  reducers: {},
+  reducers: {
+    addBook: (state, action) => {
+      state.selectedBooks.push(action.payload);
+    },
+    removeBook: (state, action) => {
+      state;
+      action;
+    },
+    changeCount: (state, action) => {
+      state;
+      action;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getBooks.fulfilled, (state, { payload }) => {
       state.books = payload;
@@ -30,11 +49,11 @@ const booksSlice = createSlice({
 
     builder.addCase(getBooks.rejected, (state) => {
       state.isLoading = false;
-      console.log(state, "state");
-      
     });
   },
 });
+
+export const { addBook, changeCount, removeBook } = booksSlice.actions;
 
 export default booksSlice;
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "./MenuList.module.scss";
+import styles from "./MenuList.module.scss";
 
 interface MENU_ITEMS {
   id: number;
@@ -13,13 +13,15 @@ interface MenuListProps {
 
 const MenuList: React.FC<MenuListProps> = ({ items }) => {
   return (
-    <ul>
-      {items.map((item) => (
-        <li key={item.id}>
-          <a href={item.link}>{item.name}</a>
-        </li>
-      ))}
-    </ul>
+    <div className={styles.menu}>
+      <ul className={styles.menu__ul}>
+        {items.map((item) => (
+          <li className={styles.menu__ul__list} key={item.id}>
+            <a href={item.link} className={styles.menu__ul__list__a}>{item.name}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

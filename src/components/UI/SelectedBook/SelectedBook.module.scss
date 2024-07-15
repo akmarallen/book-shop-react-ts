@@ -1,0 +1,54 @@
+@import  "../../../styles/vars";
+
+
+.cart {
+  cursor: pointer;
+  // position: fixed;
+  width: 500px;
+
+  &__img {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+  }
+
+  &__list {
+    display: flex;
+    background-color: aqua ;
+    list-style: none;
+    padding: 10px;
+    border-radius: 1 px solid;
+
+    &__item {
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &.active {
+        animation: slide-in 0.3s ease-in-out;
+      }
+      &:not(.active) {
+        animation: slide-out 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

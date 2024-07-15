@@ -5,9 +5,10 @@
   flex-direction: column;
   align-items: center;
   border-bottom: 1px solid #393d4a;
+  color: #393d4a;
   & h1 {
     font-size: 56px;
-    color: $col-blue;
+    color: #2f327d;
   }
 
   &__blog {
@@ -17,7 +18,7 @@
     justify-content: center;
     gap: 200px;
 
-    &_box {
+    &__box {
       display: flex;
       flex-direction: column;
       justify-content: center;

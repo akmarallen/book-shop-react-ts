@@ -67,28 +67,28 @@
       }
 
       &__search {
+        width: 576px;
+        height: 50px;
+        margin: 50px;
         border: 1px solid $col-gray;
         border-radius: 20px;
-        width: 576px;
-        height: 72px;
-        gap: 220px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         & input {
           outline: none;
           border: none;
           font-size: 16px;
         }
-        & button {
-          height: 56px;
-          width: 138px;
+        & img {
+          height: 40px;
+          width: 40px;
         }
       }
     }
   }
-  &__swiper{
+  &__swiper {
     width: 100%;
-    
   }
 }

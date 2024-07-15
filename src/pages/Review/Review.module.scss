@@ -1,24 +1,22 @@
-.reviews {
+.sectionReviews {
   height: 969px;
   width: 100%;
   display: flex;
   flex-direction: row;
+  color: #696984;
 
-  &__review {
+  &__content {
     width: 483px;
     height: 604px;
     border: 12px;
     margin: 150px 50px;
     position: relative;
 
-    &_txt {
+    &__comment {
+      position: absolute;
+      border-color: #30bc30;
       width: 586px;
       height: 284px;
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       border-radius: 12px;
       top: 93%;
       left: 71%;
@@ -27,19 +25,29 @@
       -moz-box-shadow: -21px -5px 0px -4px rgba(48, 203, 112, 1);
       box-shadow: -21px -5px 0px -4px rgba(48, 203, 112, 1);
       background-color: rgba(255, 255, 255, 0.999);
-      & p {
-        border-radius: 1px solid black;
+      &__author {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
         margin: 20px;
+      }
+      & p {
+        display: flex;
+        flex-direction: column;
+        & img {
+          width: 70px;
+          height: 70px;
+        }
       }
     }
   }
 
-  &__testimonials {
+  &__otherComments {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 150px;
+    margin: 220px;
     & h2 {
       color: #2f327d;
       font-size: 56px;
@@ -52,7 +60,7 @@
         font-size: 26px;
       }
     }
-    &_btn {
+    &__yourReview {
       display: flex;
       justify-content: center;
       align-items: center;
