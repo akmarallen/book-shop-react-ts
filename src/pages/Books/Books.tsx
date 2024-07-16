@@ -16,7 +16,7 @@ const Books = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getBooks("programming"));
+    dispatch(getBooks("js"));
   }, [dispatch]);
 
   return (
@@ -36,7 +36,6 @@ const Books = () => {
         <Swiper
           loop={true}
           slidesPerView={3}
-          spaceBetween={30}
           pagination={{
             dynamicBullets: true,
           }}

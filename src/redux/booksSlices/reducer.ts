@@ -6,7 +6,6 @@ export const getBooks = createAsyncThunk(
   async (search?: string) => {
     try {
       const response = await api.get("/volumes", { params: { q: search } });
-      console.log(response.data, "Akmaral");
       return response.data?.items;
     } catch (e) {
       return e;

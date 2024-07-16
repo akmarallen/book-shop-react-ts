@@ -1,6 +1,9 @@
 import styles from "./SelectedBook.module.scss";
-import { useSelector } from "react-redux";
-import { selectedBooks } from "../../../redux/counterSlices/counterSlices";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeBook,
+  selectedBooks,
+} from "../../../redux/counterSlices/counterSlices";
 import { useEffect } from "react";
 
 interface SelectedBookProps {
@@ -10,7 +13,11 @@ interface SelectedBookProps {
 
 const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
   const books = useSelector(selectedBooks);
+  const dispatch = useDispatch();
 
+  const handleRemoveBook = (bookId: string) => {
+    dispatch(removeBook(bookId));
+  };
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const cartElement = document.querySelector(`.${styles.cart}`);
@@ -29,10 +36,11 @@ const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
     <div
       className={`${styles.cart} ${isActive ? styles.active : ""}`}
       aria-hidden={isActive ? "false" : "true"}
-    > 
-      <ul className={styles.cart__list}>Your cart:
-        {books.length > 0 ? (
-          books.map((book) => (
+    >
+      {books.length > 0 ? (
+        books.map((book) => (
+          <ul className={styles.cart__list}>
+            Your cart:
             <li key={book.id} className={styles.cart__list__item}>
               <img src={book.image} alt={book.author} />
               <span>{book.quantity}</span>
@@ -40,13 +48,18 @@ const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
                 <h3>{book.title}</h3>
                 <p>by {book.author}</p>
               </div>
-                <div className={styles.cart__list__item__btnDel}>delete</div>
+              <div
+                className={styles.cart__list__item__delete}
+                onClick={() => handleRemoveBook(book.id)}
+              >
+                delete
+              </div>
             </li>
-          ))
-        ) : (
-          <li className={styles.cart__list__item}>Your cart is empty</li>
-        )}
-      </ul>
+          </ul>
+        ))
+      ) : (
+        <ul className={styles.cart__list__item}>Your cart is empty</ul>
+      )}
     </div>
   );
 };

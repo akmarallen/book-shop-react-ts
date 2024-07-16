@@ -50,8 +50,8 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
       </div>
       <div className={styles.books__details}>
         <h3>{book.volumeInfo.authors?.[0]}</h3>
-        <p>{book.volumeInfo.publishedDate}</p>
-        <a href={book.accessInfo.webReaderLink}>link</a> <br />
+        <p>{book.volumeInfo.language}</p>
+        <h4>Price: { book.saleInfo?.listPrice?.amount} USD</h4> <br />
       </div>
       <div className={styles.books__buttons}>
         <Button variant="cart" onClick={handleIncrement}>
