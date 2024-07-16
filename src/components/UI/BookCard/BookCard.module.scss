@@ -48,12 +48,14 @@
   }
   &__delete {
     width: 276px;
-    margin-bottom: 30px;
-    border-radius: 0 0 1rem 1rem;
+    height: 40px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    border-radius: 0 0 1rem 1rem;
     background-color: rgba($color: #30cb70, $alpha: 61%);
-    color: white;
+    color: #393d4a;
     cursor: pointer;
   }
 }

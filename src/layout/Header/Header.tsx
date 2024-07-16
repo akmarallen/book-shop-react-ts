@@ -4,32 +4,20 @@ import card from "assets/icons/cart.png";
 import Button from "components/UI/Button/Button";
 import MenuList from "components/UI/MenuList/MenuList";
 import { MENU_ITEMS } from "utils/constants";
-import { useEffect, useRef, useState } from "react";
+import {useState } from "react";
 import SelectedBook from "components/UI/SelectedBook/SelectedBook";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+
 
   const toggleCart = () => {
-    setIsActive(!isActive);
+    setIsActive((isActive) => !isActive);
   };
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-      console.log(isActive)
-      setIsActive(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-    
-  }, []);
-
+   const handleCloseCart = () => {
+     setIsActive(false);
+   };
   return (
     <div className={styles.header}>
       <img className="styles.header__img" src={logo} alt="TheBook.Pk" />
@@ -43,10 +31,10 @@ const Header = () => {
         alt="card-icon"
       />{" "}
       <div
-        ref={menuRef}
+        onClick={toggleCart}
         className={`${styles.overlay} ${isActive ? styles.active : ""}`}
       />
-      <SelectedBook isActive={isActive} />
+      <SelectedBook isActive={isActive} onClose={handleCloseCart} />
     </div>
   );
 };
