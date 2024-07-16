@@ -37,10 +37,10 @@ const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
       className={`${styles.cart} ${isActive ? styles.active : ""}`}
       aria-hidden={isActive ? "false" : "true"}
     >
+      Your cart:
       {books.length > 0 ? (
         books.map((book) => (
           <ul className={styles.cart__list}>
-            Your cart:
             <li key={book.id} className={styles.cart__list__item}>
               <img src={book.image} alt={book.author} />
               <span>{book.quantity}</span>
@@ -58,7 +58,7 @@ const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
           </ul>
         ))
       ) : (
-        <ul className={styles.cart__list__item}>Your cart is empty</ul>
+        <ul className={styles.cart__list__item}>You haven't chosen anything</ul>
       )}
     </div>
   );

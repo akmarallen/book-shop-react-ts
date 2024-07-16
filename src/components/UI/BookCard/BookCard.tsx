@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./BookCard.module.scss";
 import { Book } from "../../../redux/booksSlices/bookSlices";
 import Button from "components/UI/Button/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   decrementQuantity,
   incrementQuantity,
   removeBook,
+  selectedBooks,
 } from "../../../redux/counterSlices/counterSlices";
 
 const BookCard: React.FC<{ book: Book }> = ({ book }) => {
   const dispatch = useDispatch();
+  const cartItems = useSelector(selectedBooks);
+
   const [quantity, setQuantity] = useState(0);
+
+  useEffect(() => {
+    const bookInCart = cartItems.find((item) => item.id === book.id);
+    if (bookInCart) {
+      setQuantity(bookInCart.quantity);
+    } else {
+      setQuantity(0);
+    }
+  }, [cartItems, book.id]);
 
   const handleIncrement = () => {
     dispatch(incrementQuantity(book.id));
@@ -43,6 +55,8 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
     setQuantity(0);
   };
 
+
+
   return (
     <div className={styles.books} key={book.id}>
       <div className={styles.books__img}>
@@ -51,7 +65,7 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
       <div className={styles.books__details}>
         <h3>{book.volumeInfo.authors?.[0]}</h3>
         <p>{book.volumeInfo.language}</p>
-        <h4>Price: { book.saleInfo?.listPrice?.amount} USD</h4> <br />
+        <h4>Price: {book.saleInfo?.listPrice?.amount} USD</h4> <br />
       </div>
       <div className={styles.books__buttons}>
         <Button variant="cart" onClick={handleIncrement}>
