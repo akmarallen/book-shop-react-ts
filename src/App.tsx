@@ -10,13 +10,13 @@ import "./App.css";
 function App() {
   return (
     <div>
-        <Header />
-        <Hero />
-        <Books />
-        <Author />
-        <Blogs />
-        <Review />
-        <Footer />
+      <Header />
+      <Hero />
+      <Books />
+      <Author />
+      <Blogs />
+      <Review />
+      <Footer />
     </div>
   );
 }

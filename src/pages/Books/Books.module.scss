@@ -1,6 +1,5 @@
 @import "styles/vars.scss";
 .books {
-  margin: 40px;
   display: flex;
   flex-direction: column;
 
@@ -8,12 +7,12 @@
     display: flex;
     justify-content: center;
     color: $col-blue;
-    // font-size: 56px;
+    font-size: 56px;
   }
 
   &__buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
     &__news {
       display: flex;
