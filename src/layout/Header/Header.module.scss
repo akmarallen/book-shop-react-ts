@@ -29,12 +29,11 @@
   bottom: 0;
   right: 0;
   top: 0;
-}
+  &.active {
+    z-index: 99;
+    position: fixed;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 
-.overlay.active {
-  z-index: 99;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
 }

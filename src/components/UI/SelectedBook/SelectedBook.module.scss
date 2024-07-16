@@ -1,23 +1,29 @@
 @import "../../../styles/vars";
 
-
 .cart {
   height: 100vh;
   width: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #17141d;
-  color: white;
+  background-color: #badcc8;
+  color: #393d4a;
   z-index: 100;
   position: fixed;
   right: 0;
   bottom: 0;
   transform: translateX(100%);
-  transition: transform 0.3s linear;
+  transition: transform 0.2s linear;
   margin-left: 200px;
-}
-
-.cart.active {
-  transform: translateX(0);
+  &__list {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    &__item {
+      list-style: none;
+    }
+  }
+  &.active {
+    transform: translateX(0);
+  }
 }
