@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./BookCard.module.scss";
 import { Book } from "../../../redux/booksSlices/bookSlices";
 import Button from "components/UI/Button/Button";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -14,8 +16,8 @@ import {
 const BookCard: React.FC<{ book: Book }> = ({ book }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectedBooks);
-
   const [quantity, setQuantity] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const bookInCart = cartItems.find((item) => item.id === book.id);
@@ -55,15 +57,33 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
     setQuantity(0);
   };
 
+  const handleMouse = () => {
+    setIsHovered(!isHovered);
+  };
   return (
     <div className={styles.books} key={book.id}>
-      <div className={styles.books__img}>
-        <img src={book.volumeInfo.imageLinks?.thumbnail} alt="Book Photo" />
+      <div className={styles.books__imgs}>
+        {isHovered ? (
+          <FavoriteOutlinedIcon
+            className={styles.books__imgs__imgFavorite}
+            onClick={handleMouse}
+          />
+        ) : (
+          <FavoriteBorderOutlinedIcon
+            onClick={handleMouse}
+            className={styles.books__imgs__imgFavorite}
+          />
+        )}
+        <img
+          className={styles.books__imgs__imgCard}
+          src={book.volumeInfo.imageLinks?.thumbnail}
+          alt="Book Photo"
+        />
       </div>
       <div className={styles.books__details}>
         <h3>{book.volumeInfo.authors?.[0]}</h3>
-        <p>{book.volumeInfo.language}</p>
-        <h4>Price: {book.saleInfo?.listPrice?.amount} USD</h4> <br />
+        <span>{book.volumeInfo.language}</span> <br />
+        <span>Price: {book.saleInfo?.listPrice?.amount} USD</span> <br />
       </div>
       <div className={styles.books__buttons}>
         <Button variant="cart" onClick={handleIncrement}>
