@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   removeBook,
   selectedBooks,
+  totalQuantity,
 } from "../../../redux/counterSlices/counterSlices";
 import { useEffect } from "react";
 
@@ -13,6 +14,8 @@ interface SelectedBookProps {
 
 const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
   const books = useSelector(selectedBooks);
+  const totalQty = useSelector(totalQuantity);
+  
   const dispatch = useDispatch();
 
   const handleRemoveBook = (bookId: string) => {
@@ -37,7 +40,7 @@ const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
       className={`${styles.cart} ${isActive ? styles.active : ""}`}
       aria-hidden={isActive ? "false" : "true"}
     >
-      Your cart:
+      Your cart: <span>{totalQty} items</span>
       {books.length > 0 ? (
         books.map((book) => (
           <ul className={styles.cart__list}>

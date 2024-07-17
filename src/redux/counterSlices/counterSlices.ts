@@ -59,3 +59,7 @@ export const cartReducer = counterSlices.reducer;
 export const { addToCart, incrementQuantity, decrementQuantity, removeBook } =
   counterSlices.actions;
 export const selectedBooks = (state: RootState) => state.cart.cart;
+
+// New selector to calculate total quantity
+export const totalQuantity = (state: RootState) =>
+  state.cart.cart.reduce((total, book) => total + book.quantity, 0);

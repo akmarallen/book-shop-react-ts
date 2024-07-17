@@ -55,8 +55,6 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
     setQuantity(0);
   };
 
-
-
   return (
     <div className={styles.books} key={book.id}>
       <div className={styles.books__img}>
