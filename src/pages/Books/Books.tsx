@@ -1,6 +1,6 @@
 import styles from "./Books.module.scss";
 import Button from "components/UI/Button/Button";
-import BookCard from "components/UI/BookCard/BookCard";
+import BookCard from "components/BookCard/BookCard";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";

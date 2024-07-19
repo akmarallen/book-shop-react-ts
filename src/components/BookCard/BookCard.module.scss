@@ -10,21 +10,20 @@
   &__imgs {
     background-color: #30cb70;
     width: 276px;
-    height: 310px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 25px;
 
     &__imgCard {
       width: 190px;
       height: 280px;
     }
     &__imgFavorite {
-      // position: absolute;
       left: 0;
-      top: 5px;
+      top: 20px;
       margin-left: 210px;
   
     }
@@ -32,6 +31,7 @@
 
   &__details {
     width: 276px;
+    height: 120px;
     & h3,
     h4 {
       color: #393d4a;
@@ -46,20 +46,20 @@
   }
   &__buttons {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 30px;
+    
   }
-  &__delete {
-    width: 276px;
-    height: 40px;
+  &__addToCard {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
-    border-radius: 0 0 1rem 1rem;
-    background-color: rgba($color: #30cb70, $alpha: 80%);
+    width: 276px;
+    height: 45px;
+    // margin-bottom: 10px;
+    border-radius: 1rem;
+    background-color: #30cb70;
     color: #393d4a;
     cursor: pointer;
   }

@@ -6,6 +6,7 @@ export interface ISelectedBooks {
   quantity: number;
   author: string;
   title: string;
+  price: number;
   image: string;
 }
 
@@ -30,7 +31,6 @@ const counterSlices = createSlice({
       } else {
         state.cart.push({ ...action.payload, quantity: 1 });
       }
-      // console.log(state.cart);
     },
     incrementQuantity: (state, action: PayloadAction<string>) => {
       const book = state.cart.find((book) => book.id === action.payload);

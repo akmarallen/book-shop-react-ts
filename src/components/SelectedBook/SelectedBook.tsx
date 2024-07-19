@@ -6,7 +6,7 @@ import {
   removeBook,
   selectedBooks,
   totalQuantity,
-} from "../../../redux/counterSlices/counterSlices";
+} from "../../redux/counterSlices/counterSlices";
 import { useEffect } from "react";
 
 interface SelectedBookProps {
@@ -31,6 +31,8 @@ const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
   const handleDecrement = (bookId: string, quantity: number) => {
     if (quantity > 0) {
       dispatch(decrementQuantity(bookId));
+    } else if (quantity === 0) {
+      handleRemoveBook;
     }
   };
 
@@ -66,7 +68,9 @@ const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
               </div>
               <div className={styles.cart__list__item__buttons}>
                 <div onClick={() => handleIncrement(book.id)}>+</div>
-                <div onClick={() => handleDecrement(book.id, book.quantity)}>-</div>
+                <div onClick={() => handleDecrement(book.id, book.quantity)}>
+                  -
+                </div>
                 <div onClick={() => handleRemoveBook(book.id)}>delete</div>
               </div>
             </li>

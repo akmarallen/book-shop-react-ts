@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BookCard.module.scss";
-import { Book } from "../../../redux/booksSlices/bookSlices";
+import { Book } from "../../redux/booksSlices/bookSlices";
 import Button from "components/UI/Button/Button";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   decrementQuantity,
   incrementQuantity,
-  removeBook,
   selectedBooks,
-} from "../../../redux/counterSlices/counterSlices";
+} from "../../redux/counterSlices/counterSlices";
 
 const BookCard: React.FC<{ book: Book }> = ({ book }) => {
   const dispatch = useDispatch();
@@ -31,17 +29,18 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
   const handleIncrement = () => {
     dispatch(incrementQuantity(book.id));
 
-    if (quantity === 0) {
-      dispatch(
-        addToCart({
-          id: book.id,
-          quantity: 1,
-          author: book.volumeInfo.authors?.[0] || "Unknown",
-          title: book.volumeInfo.title,
-          image: book.volumeInfo.imageLinks?.thumbnail || "",
-        })
-      );
-    }
+    // if (quantity === 0) {
+    //   dispatch(
+    //     addToCart({
+    //       id: book.id,
+    //       quantity: 1,
+    //       author: book.volumeInfo.authors?.[0] || "Unknown",
+    //       title: book.volumeInfo.title,
+    //       price: book.saleInfo.listPrice.amount || 0,
+    //       image: book.volumeInfo.imageLinks?.thumbnail || "",
+    //     })
+    //   );
+    // }
 
     setQuantity((quantity) => quantity + 1);
   };
@@ -52,24 +51,44 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
-  const handleRemove = () => {
-    dispatch(removeBook(book.id));
-    setQuantity(0);
-  };
 
   const handleMouse = () => {
     setIsHovered(!isHovered);
+  };
+
+  // const handleAddToCart = () => {
+  //   setAddedToCart(!addedToCart);
+  // };
+
+  const handleAddToCart = () => {
+    if (quantity === 0) {
+      dispatch(
+        addToCart({
+          id: book.id,
+          quantity: 1,
+          author: book.volumeInfo.authors?.[0] || "Unknown",
+          title: book.volumeInfo.title,
+          price: book.saleInfo?.listPrice?.amount || 0,
+          image: book.volumeInfo.imageLinks?.thumbnail || "",
+        })
+      );
+      // console.log(addToCart/, "fub");
+
+      setQuantity(1);
+    }
   };
   return (
     <div className={styles.books} key={book.id}>
       <div className={styles.books__imgs}>
         {isHovered ? (
           <FavoriteOutlinedIcon
+            style={{ color: "red", fontSize: "1.8rem" }}
             className={styles.books__imgs__imgFavorite}
             onClick={handleMouse}
           />
         ) : (
-          <FavoriteBorderOutlinedIcon
+          <FavoriteOutlinedIcon
+            style={{ color: "white", fontSize: "1.8rem" }}
             onClick={handleMouse}
             className={styles.books__imgs__imgFavorite}
           />
@@ -85,18 +104,21 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
         <span>{book.volumeInfo.language}</span> <br />
         <span>Price: {book.saleInfo?.listPrice?.amount} USD</span> <br />
       </div>
-      <div className={styles.books__buttons}>
-        <Button variant="cart" onClick={handleIncrement}>
-          +
-        </Button>
-        <p>{quantity}</p>
-        <Button variant="cart" onClick={handleDecrement}>
-          -
-        </Button>
-      </div>
-      <div className={styles.books__delete} onClick={handleRemove}>
-        DELETE
-      </div>
+      {quantity > 0 ? (
+        <div className={styles.books__buttons}>
+          <Button variant="cart" onClick={handleIncrement}>
+            +
+          </Button>
+          <span>{quantity}</span>
+          <Button variant="cart" onClick={handleDecrement}>
+            -
+          </Button>
+        </div>
+      ) : (
+        <div className={styles.books__addToCard} onClick={handleAddToCart}>
+          ADD TO CARD
+        </div>
+      )}
     </div>
   );
 };

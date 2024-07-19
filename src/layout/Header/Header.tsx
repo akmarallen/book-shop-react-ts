@@ -6,7 +6,7 @@ import Button from "components/UI/Button/Button";
 import MenuList from "components/UI/MenuList/MenuList";
 import { MENU_ITEMS } from "utils/constants";
 import { useState } from "react";
-import SelectedBook from "components/UI/SelectedBook/SelectedBook";
+import SelectedBook from "components/BookCard/BookCard";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
