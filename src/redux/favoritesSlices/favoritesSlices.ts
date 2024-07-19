@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "redux/store";
 
 export interface Favorite {
   id: string;
+  author: string;
   title: string;
   price: number;
-  author: string;
+  language: string;
   image: string;
 }
 
@@ -17,7 +19,7 @@ const initialState: FavoritesState = {
 };
 
 const favoritesSlices = createSlice({
-  name: "favorites",
+  name: "favorite",
   initialState,
   reducers: {
     addToFavorites: (state, action: PayloadAction<Favorite>) => {
@@ -34,5 +36,4 @@ const favoritesSlices = createSlice({
 
 export default favoritesSlices;
 export const { addToFavorites, removeFromFavorites } = favoritesSlices.actions;
-export const selectFavoriteBooks = (state: { favorites: FavoritesState }) =>
-  state.favorites.books;
+export const selectFavoriteBooks = (state: RootState) => state.books.books;

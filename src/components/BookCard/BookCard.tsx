@@ -15,7 +15,7 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectedBooks);
   const [quantity, setQuantity] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isFavorite, setisFavorite] = useState(false);
 
   useEffect(() => {
     const bookInCart = cartItems.find((item) => item.id === book.id);
@@ -24,24 +24,26 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
     } else {
       setQuantity(0);
     }
-  }, [cartItems, book.id]);
+  }, [cartItems, book?.id]);
+
+  const handleAddToCart = () => {
+    if (quantity === 0) {
+      dispatch(
+        addToCart({
+          id: book.id,
+          quantity: 1,
+          authors: book.volumeInfo?.authors[0] || "Unknown",
+          title: book.volumeInfo.title || "",
+          price: book.saleInfo?.listPrice?.amount || 0,
+          image: book.volumeInfo.imageLinks?.thumbnail || "",
+        })
+      );
+      setQuantity(1);
+    }
+  };
 
   const handleIncrement = () => {
     dispatch(incrementQuantity(book.id));
-
-    // if (quantity === 0) {
-    //   dispatch(
-    //     addToCart({
-    //       id: book.id,
-    //       quantity: 1,
-    //       author: book.volumeInfo.authors?.[0] || "Unknown",
-    //       title: book.volumeInfo.title,
-    //       price: book.saleInfo.listPrice.amount || 0,
-    //       image: book.volumeInfo.imageLinks?.thumbnail || "",
-    //     })
-    //   );
-    // }
-
     setQuantity((quantity) => quantity + 1);
   };
 
@@ -52,55 +54,35 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
     }
   };
 
-  const handleMouse = () => {
-    setIsHovered(!isHovered);
+  const toggleFavorite = () => {
+    setisFavorite(!isFavorite);
   };
 
-  // const handleAddToCart = () => {
-  //   setAddedToCart(!addedToCart);
-  // };
-
-  const handleAddToCart = () => {
-    if (quantity === 0) {
-      dispatch(
-        addToCart({
-          id: book.id,
-          quantity: 1,
-          author: book.volumeInfo.authors?.[0] || "Unknown",
-          title: book.volumeInfo.title,
-          price: book.saleInfo?.listPrice?.amount || 0,
-          image: book.volumeInfo.imageLinks?.thumbnail || "",
-        })
-      );
-      // console.log(addToCart/, "fub");
-
-      setQuantity(1);
-    }
-  };
   return (
-    <div className={styles.books} key={book.id}>
+    <div className={styles.books}>
       <div className={styles.books__imgs}>
-        {isHovered ? (
+        {isFavorite ? (
           <FavoriteOutlinedIcon
             style={{ color: "red", fontSize: "1.8rem" }}
             className={styles.books__imgs__imgFavorite}
-            onClick={handleMouse}
+            onClick={toggleFavorite}
           />
         ) : (
           <FavoriteOutlinedIcon
             style={{ color: "white", fontSize: "1.8rem" }}
-            onClick={handleMouse}
+            onClick={toggleFavorite}
             className={styles.books__imgs__imgFavorite}
           />
         )}
         <img
           className={styles.books__imgs__imgCard}
-          src={book.volumeInfo.imageLinks?.thumbnail}
+          src={book?.volumeInfo?.imageLinks?.thumbnail}
           alt="Book Photo"
         />
       </div>
       <div className={styles.books__details}>
         <h3>{book.volumeInfo.authors?.[0]}</h3>
+        <span>{book.volumeInfo?.title}</span>
         <span>{book.volumeInfo.language}</span> <br />
         <span>Price: {book.saleInfo?.listPrice?.amount} USD</span> <br />
       </div>

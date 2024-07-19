@@ -4,7 +4,7 @@ import { RootState } from "redux/store";
 export interface ISelectedBooks {
   id: string;
   quantity: number;
-  author: string;
+  authors: string;
   title: string;
   price: number;
   image: string;

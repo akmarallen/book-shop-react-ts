@@ -17,8 +17,20 @@ interface SelectedBookProps {
 const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
   const books = useSelector(selectedBooks);
   const totalQty = useSelector(totalQuantity);
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const cartElement = document.querySelector(`.${styles.cart}`);
+      if (cartElement && !cartElement.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
 
   const handleRemoveBook = (bookId: string) => {
     dispatch(removeBook(bookId));
@@ -36,20 +48,6 @@ const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
     }
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const cartElement = document.querySelector(`.${styles.cart}`);
-      if (cartElement && !cartElement.contains(event.target as Node)) {
-        onClose();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [onClose]);
-
   return (
     <div
       className={`${styles.cart} ${isActive ? styles.active : ""}`}
@@ -60,11 +58,11 @@ const SelectedBook: React.FC<SelectedBookProps> = ({ isActive, onClose }) => {
         books.map((book) => (
           <ul className={styles.cart__list}>
             <li key={book.id} className={styles.cart__list__item}>
-              <img src={book.image} alt={book.author} />
+              <img src={book.image} alt={book.authors} />
               <span>{book.quantity}</span>
               <div className={styles.cart__list__item__details}>
                 <h3>{book.title}</h3>
-                <p>by {book.author}</p>
+                <p>by {book.authors}</p>
               </div>
               <div className={styles.cart__list__item__buttons}>
                 <div onClick={() => handleIncrement(book.id)}>+</div>

@@ -4,7 +4,7 @@ import {
   Favorite,
   removeFromFavorites,
   selectFavoriteBooks,
-} from "redux/favoritesSlices/favoritesSlices";
+} from "../../redux/favoritesSlices/favoritesSlices";
 
 const FavoriteBooks: React.FC<{ book: Favorite }> = ({ book }) => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const FavoriteBooks: React.FC<{ book: Favorite }> = ({ book }) => {
   };
 
   return (
-    <div>
+    <div key={book.id}>
       <h3>{book.title}</h3>
       <button onClick={handleToggleFavorite}>
         {isFavorite ? "Remove from Favorites" : "Add to Favorites"}

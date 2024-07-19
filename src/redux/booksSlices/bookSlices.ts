@@ -83,12 +83,10 @@ export interface VolumeInfo {
   maturityRating: string;
   allowAnonLogging: boolean;
   contentVersion: string;
-  panelizationSummary: PanelizationSummary;
   imageLinks: ImageLinks;
   language: string;
   previewLink: string;
   infoLink: string;
-  canonicalVolumeLink: string;
 }
 
 export interface IndustryIdentifier {
