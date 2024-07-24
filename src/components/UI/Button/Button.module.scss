@@ -44,10 +44,11 @@
     transition: border-color 0.25s;
     color: $col-green;
     background-color: white;
-    border: 1px solid rgba($color: $col-green, $alpha: 61%);
+    border: 1px solid rgba($color: $col-green, $alpha: 65%);
     &:hover {
-    background-color: rgba($color: $col-green, $alpha: 61%);
-      color: white;
+      background-color: rgba($color: $col-green, $alpha: 100%);
+      border: 1px solid $col-gray;
+      color: $col-gray;
       font-weight: 700;
     }
   }

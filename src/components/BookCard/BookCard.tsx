@@ -10,21 +10,34 @@ import {
   incrementQuantity,
   selectedBooks,
 } from "../../redux/counterSlices/counterSlices";
+import {
+  selectFavoriteBooks,
+  toggleFavorite,
+} from "../../redux/favoritesSlices/favoritesSlices";
 
-const BookCard: React.FC<{ book: Book }> = ({ book }) => {
+interface BookCardProps {
+  book: Book;
+  isFavorite: boolean;
+}
+
+const BookCard: React.FC<BookCardProps> = React.memo(({ book }) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector(selectedBooks);
+  const cartBooks = useSelector(selectedBooks);
+  const favoriteBooks = useSelector(selectFavoriteBooks);
+
+  const [isFavorite, setIsFavorite] = useState(false);
   const [quantity, setQuantity] = useState(0);
-  const [isFavorite, setisFavorite] = useState(false);
 
   useEffect(() => {
-    const bookInCart = cartItems.find((item) => item.id === book.id);
+    const bookInCart = cartBooks.find((item) => item.id === book.id);
     if (bookInCart) {
       setQuantity(bookInCart.quantity);
     } else {
       setQuantity(0);
     }
-  }, [cartItems, book?.id]);
+    const bookInFavorites = favoriteBooks.some((item) => item.id === book.id);
+    setIsFavorite(bookInFavorites);
+  }, [cartBooks, favoriteBooks, book.id]);
 
   const handleAddToCart = () => {
     if (quantity === 0) {
@@ -54,8 +67,16 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
     }
   };
 
-  const toggleFavorite = () => {
-    setisFavorite(!isFavorite);
+  const handleToggleFavorite = () => {
+    const favoriteBook = {
+      id: book.id,
+      author: book.volumeInfo?.authors[0] || "Unknown",
+      title: book.volumeInfo.title || "",
+      price: book.saleInfo?.listPrice?.amount || 0,
+      image: book.volumeInfo.imageLinks?.thumbnail || "",
+    };
+
+    dispatch(toggleFavorite(favoriteBook));
   };
 
   return (
@@ -65,12 +86,12 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
           <FavoriteOutlinedIcon
             style={{ color: "red", fontSize: "1.8rem" }}
             className={styles.books__imgs__imgFavorite}
-            onClick={toggleFavorite}
+            onClick={handleToggleFavorite}
           />
         ) : (
           <FavoriteOutlinedIcon
             style={{ color: "white", fontSize: "1.8rem" }}
-            onClick={toggleFavorite}
+            onClick={handleToggleFavorite}
             className={styles.books__imgs__imgFavorite}
           />
         )}
@@ -82,7 +103,6 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
       </div>
       <div className={styles.books__details}>
         <h3>{book.volumeInfo.authors?.[0]}</h3>
-        <span>{book.volumeInfo?.title}</span>
         <span>{book.volumeInfo.language}</span> <br />
         <span>Price: {book.saleInfo?.listPrice?.amount} USD</span> <br />
       </div>
@@ -103,6 +123,5 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => {
       )}
     </div>
   );
-};
-
+});
 export default BookCard;

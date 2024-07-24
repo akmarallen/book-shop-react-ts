@@ -6,7 +6,6 @@ export interface Favorite {
   author: string;
   title: string;
   price: number;
-  language: string;
   image: string;
 }
 
@@ -22,18 +21,20 @@ const favoritesSlices = createSlice({
   name: "favorite",
   initialState,
   reducers: {
-    addToFavorites: (state, action: PayloadAction<Favorite>) => {
-      const existingBook = state.books.find(
+    toggleFavorite: (state, action: PayloadAction<Favorite>) => {
+      const existingBookIndex = state.books.findIndex(
         (book) => book.id === action.payload.id
       );
-      if (!existingBook) state.books.push(action.payload);
-    },
-    removeFromFavorites: (state, action: PayloadAction<string>) => {
-      state.books = state.books.filter((book) => book.id !== action.payload);
+
+      if (existingBookIndex !== -1) {
+        state.books.splice(existingBookIndex, 1);
+      } else {
+        state.books.push({ ...action.payload });
+      }
     },
   },
 });
 
 export default favoritesSlices;
-export const { addToFavorites, removeFromFavorites } = favoritesSlices.actions;
-export const selectFavoriteBooks = (state: RootState) => state.books.books;
+export const { toggleFavorite } = favoritesSlices.actions;
+export const selectFavoriteBooks = (state: RootState) => state.favorite.books;

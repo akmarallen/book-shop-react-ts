@@ -1,0 +1,78 @@
+@import "../../styles/vars";
+
+.favorites {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 500px;
+  height: 600px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+      overflow-y: scroll;
+
+  z-index: 100;
+
+  &.active {
+    display: flex;
+    // flex-direction: column;
+    // position: absolute;
+    // top: 60px;
+    // right: 100px;
+    // width: 500px;
+    // height: 100vh;
+    // background-color: white;
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    // border-radius: 8px;
+    // overflow: hidden;
+    // transition: max-height 0.3s ease-in-out;
+    // z-index: 100;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+
+      & img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+      }
+
+      &__details {
+        flex-grow: 1;
+
+        & h3 {
+          margin: 0;
+          font-size: 1rem;
+        }
+
+        & button {
+          background-color: $col-green;
+          border: none;
+          color: white;
+          padding: 5px 10px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: darken($col-green, 10%);
+          }
+        }
+      }
+    }
+  }
+}
