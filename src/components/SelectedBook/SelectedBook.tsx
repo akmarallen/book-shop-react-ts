@@ -1,15 +1,14 @@
 import styles from "./SelectedBook.module.scss";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decrementQuantity,
   incrementQuantity,
-  removeBook,
   selectedBooks,
   totalQuantity,
-} from "../../redux/counterSlices/counterSlices";
-import { useEffect, useRef } from "react";
-import Button from "components/UI/Button/Button";
-
+} from "@redux/counterSlices/counterSlices";
+import { removeBook } from "@redux/booksSlices/bookSlices";
+import Button from "@components/UI/Button/Button";
 export interface SelectedBookProps {
   isActive: boolean;
   onClose: () => void;

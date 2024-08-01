@@ -1,13 +1,13 @@
 import styles from "./Header.module.scss";
 import { useState } from "react";
 import logo from "/logo.svg";
-import card from "assets/icons/cart.png";
-import Button from "components/UI/Button/Button";
-import MenuList from "components/UI/MenuList/MenuList";
+import cart from "@assets/icons/cart.png";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
-import { MENU_ITEMS } from "utils/constants";
-import SelectedBook from "components/SelectedBook/SelectedBook";
-import FavoriteBooks from "components/FavoriteBooks/FavoriteBooks";
+import { MENU_ITEMS } from "@utils/constants";
+import MenuList from "@components/UI/MenuList/MenuList";
+import Button from "@components/UI/Button/Button";
+import FavoriteBooks from "@components/FavoriteBooks/FavoriteBooks";
+import SelectedBook from "@components/SelectedBook/SelectedBook";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -51,7 +51,7 @@ const Header = () => {
         <img
           className={styles.cart__img}
           onClick={toggleCart}
-          src={card}
+          src={cart}
           alt="card-icon"
         />{" "}
         <div

@@ -1,22 +1,24 @@
 import styles from "./Books.module.scss";
-import Button from "components/UI/Button/Button";
-import BookCard from "components/BookCard/BookCard";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect } from "react";
-import { getBooks } from "../../redux/booksSlices/reducer";
-import { useAppDispatch } from "../../redux/store";
 import { useSelector } from "react-redux";
-import { selectBooks } from "../../redux/booksSlices/bookSlices";
+import Button from "@components/UI/Button/Button";
+import BookCard from "@components/BookCard/BookCard";
+import { getBooks } from "@redux/booksSlices/reducer";
+import { selectBooks } from "@redux/booksSlices/bookSlices";
+import { useAppDispatch } from "@redux/store";
 
 const Books = () => {
   const books = useSelector(selectBooks);
+  console.log(selectBooks, "selectBooks");
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getBooks("js"));
+    dispatch(getBooks("computer"));
   }, [dispatch]);
 
   return (

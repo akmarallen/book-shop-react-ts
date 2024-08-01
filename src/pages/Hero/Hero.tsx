@@ -1,15 +1,15 @@
-import Button from "components/UI/Button/Button";
-import styles from "./Hero.module.scss";
-import boy from "assets/images/read-boy.svg";
-import sale from "assets/images/banner.svg";
-import sale2 from "assets/images/banner-2.svg";
-import sale3 from "assets/images/banner-3.svg";
-import search from "assets/icons/search.svg";
-import whatsapp from "assets/icons/whatsapp-link.svg";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import styles from "./Hero.module.scss";
+import Button from "@components/UI/Button/Button";
+import boy from "@assets/images/read-boy.svg";
+import sale from "@assets/images/banner.svg";
+import sale2 from "@assets/images/banner-2.svg";
+import sale3 from "@assets/images/banner-3.svg";
+import search from "@assets/icons/search.svg";
+import whatsapp from "@assets/icons/whatsapp-link.svg";
 
 const Hero = () => {
   return (

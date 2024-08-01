@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BookCard.module.scss";
-import { Book } from "../../redux/booksSlices/bookSlices";
-import Button from "components/UI/Button/Button";
+import { Book } from "@redux/booksSlices/bookSlices";
+import Button from "@components/UI/Button/Button";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -9,11 +9,11 @@ import {
   decrementQuantity,
   incrementQuantity,
   selectedBooks,
-} from "../../redux/counterSlices/counterSlices";
+} from "@redux/counterSlices/counterSlices";
 import {
   selectFavoriteBooks,
   toggleFavorite,
-} from "../../redux/favoritesSlices/favoritesSlices";
+} from "@redux/favoritesSlices/favoritesSlices";
 
 interface BookCardProps {
   book: Book;
@@ -104,7 +104,7 @@ const BookCard: React.FC<BookCardProps> = React.memo(({ book }) => {
       <div className={styles.books__details}>
         <h3>{book.volumeInfo.authors?.[0]}</h3>
         <span>{book.volumeInfo.language}</span> <br />
-        <span>Price: {book.saleInfo?.listPrice?.amount} USD</span> <br />
+        <span>Price: {book.saleInfo?.listPrice?.amount ?? 0} USD</span> <br />
       </div>
       {quantity > 0 ? (
         <div className={styles.books__buttons}>
@@ -118,7 +118,7 @@ const BookCard: React.FC<BookCardProps> = React.memo(({ book }) => {
         </div>
       ) : (
         <div className={styles.books__addToCard} onClick={handleAddToCart}>
-          ADD TO CARD
+          <span>ADD TO CARD</span>
         </div>
       )}
     </div>

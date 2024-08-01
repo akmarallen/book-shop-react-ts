@@ -1,66 +1,90 @@
-@import "styles/vars.scss";
-
 .books {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 270px;
-  height: 570px;
+  width: 300px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
   &__imgs {
-    background-color: #30cb70;
-    width: 276px;
+    width: 100%;
     height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 25px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #30cb70;
 
     &__imgCard {
-      width: 190px;
+      width: 200px;
       height: 280px;
+      overflow: hidden;
+      border-radius: 10px;
     }
+
     &__imgFavorite {
-      left: 0;
+      position: absolute;
       top: 20px;
-      margin-left: 210px;
-  
+      left: 0;
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+      background-color: #30cb70;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
   }
 
   &__details {
-    width: 276px;
-    height: 120px;
-    & h3,
-    h4 {
-      color: #393d4a;
-    }
-    & p {
-      color: rgba($color: #393d4a, $alpha: 48%);
-    }
-    & a {
-      text-decoration: none;
-      color: #9747ff;
-    }
-  }
-  &__buttons {
+    width: 100%;
+    height: 150px;
+    padding: 20px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    
-  }
-  &__addToCard {
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 276px;
-    height: 45px;
-    // margin-bottom: 10px;
-    border-radius: 1rem;
+
+    & h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #30cb70;
+    }
+
+    & span {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    & button {
+      background-color: #30cb70;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+  &__addToCart {
     background-color: #30cb70;
-    color: #393d4a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
+   
   }
 }

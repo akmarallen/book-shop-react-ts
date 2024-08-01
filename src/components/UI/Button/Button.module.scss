@@ -1,4 +1,4 @@
-@import "styles/vars.scss";
+@import "@styles/vars.scss";
 
 .button {
   &__primary {
@@ -9,7 +9,7 @@
     border-radius: 12px;
     transition: border-color 0.25s;
 
-    color: $col-green;
+    color: $primary;
     background-color: white;
     border: 1px solid #30cb70;
     &:hover {
@@ -20,7 +20,7 @@
   }
   &__secondary {
     color: white;
-    background-color: $col-green;
+    background-color: $primary;
     border: 1px solid transparent;
     width: 100px;
     height: 48px;
@@ -31,7 +31,7 @@
 
     &:hover {
       background-color: white;
-      color: $col-green;
+      color: $primary;
       border-color: #30cb70;
     }
   }
@@ -42,11 +42,11 @@
     font-weight: 700;
     border-radius: 8px;
     transition: border-color 0.25s;
-    color: $col-green;
+    color: $primary;
     background-color: white;
-    border: 1px solid rgba($color: $col-green, $alpha: 65%);
+    border: 1px solid rgba($color: $primary, $alpha: 65%);
     &:hover {
-      background-color: rgba($color: $col-green, $alpha: 100%);
+      background-color: rgba($color: $primary, $alpha: 100%);
       border: 1px solid $col-gray;
       color: $col-gray;
       font-weight: 700;

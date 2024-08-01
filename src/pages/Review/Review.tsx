@@ -1,8 +1,8 @@
-import user from "assets/images/reviews-photo.svg";
-import right from "assets/icons/right-arrow.svg";
-import stars from "assets/icons/stars.png";
+import user from "@assets/images/reviews-photo.svg";
+import right from "@assets/icons/right-arrow.svg";
+import stars from "@assets/icons/stars.png";
 import styles from "./Review.module.scss";
-import Button from "components/UI/Button/Button";
+import Button from "@components/UI/Button/Button";
 
 const Review = () => {
   return (

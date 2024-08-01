@@ -1,6 +1,6 @@
-import Button from "components/UI/Button/Button";
+import Button from "@components/UI/Button/Button";
 import styles from "./Author.module.scss";
-import author from "assets/images/authors-photo.svg";
+import author from "@assets/images/authors-photo.svg";
 const Author = () => {
   return (
     <div className={styles.author__banner}>

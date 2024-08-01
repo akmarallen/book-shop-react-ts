@@ -5,7 +5,7 @@ import {
   toggleFavorite,
   selectFavoriteBooks,
   Favorite,
-} from "../../redux/favoritesSlices/favoritesSlices";
+} from "@redux/favoritesSlices/favoritesSlices";
 
 export interface FavoriteBooksProps {
   isFavoriteActive: boolean;

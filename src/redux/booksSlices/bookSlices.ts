@@ -58,6 +58,7 @@ export const { addBook, changeCount, removeBook } = booksSlice.actions;
 export default booksSlice;
 
 export const selectBooks = (state: RootState) => state.books.books;
+
 export interface Book {
   kind: string;
   id: string;
@@ -84,7 +85,7 @@ export interface SaleInfo {
   saleability: string;
   isEbook: boolean;
   listPrice: {
-    amount: number;
+    amount: number | 0;
     currencyCode: string;
   };
 }

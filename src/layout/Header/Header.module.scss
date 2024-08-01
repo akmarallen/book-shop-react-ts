@@ -1,4 +1,4 @@
-@import "styles/vars.scss";
+@import "@styles/vars.scss";
 
 .header {
   display: flex;
@@ -47,7 +47,7 @@
       width: 500px;
       z-index: 99;
       position: fixed;
-      background-color: $col-green;
+      background-color: $primary;
     }
   }
 }

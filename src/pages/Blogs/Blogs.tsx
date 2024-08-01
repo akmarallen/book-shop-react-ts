@@ -1,7 +1,7 @@
-import Button from "components/UI/Button/Button";
+import Button from "@components/UI/Button/Button";
 import styles from "./Blogs.module.scss";
-import first from "assets/images/blog-1.svg";
-import second from "assets/images/blog-2.svg";
+import first from "@assets/images/blog-1.svg";
+import second from "@assets/images/blog-2.svg";
 
 const Blogs = () => {
   return (

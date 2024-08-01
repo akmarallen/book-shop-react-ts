@@ -1,4 +1,4 @@
-@import "../../styles/vars";
+@import "@styles/vars";
 
 .favorites {
   display: none;
@@ -60,7 +60,7 @@
         }
 
         & button {
-          background-color: $col-green;
+          background-color: $primary;
           border: none;
           color: white;
           padding: 5px 10px;
@@ -69,7 +69,7 @@
           transition: background-color 0.3s;
 
           &:hover {
-            background-color: darken($col-green, 10%);
+            background-color: darken($primary, 10%);
           }
         }
       }
