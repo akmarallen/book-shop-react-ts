@@ -67,24 +67,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-
-    & button {
-      background-color: #30cb70;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+    gap: 10px;
+    
   }
-  &__addToCart {
-    background-color: #30cb70;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
+  & button {
+    width: 150px;
+    height: 30px;
     font-size: 16px;
-    cursor: pointer;
-   
+    font-weight: 700;
+    border-radius: 8px;
+    transition: border-color 0.25s;
+    color: #30cb70;
+    background-color: white;
+    border: 1px solid rgba($color: #30cb70, $alpha: 65%);
   }
 }

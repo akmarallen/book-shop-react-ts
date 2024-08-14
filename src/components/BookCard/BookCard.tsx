@@ -117,8 +117,8 @@ const BookCard: React.FC<BookCardProps> = React.memo(({ book }) => {
           </Button>
         </div>
       ) : (
-        <div className={styles.books__addToCard} onClick={handleAddToCart}>
-          <span>ADD TO CARD</span>
+        <div onClick={handleAddToCart} className={styles.books__addToCard}>
+          <button>Add to cart</button>
         </div>
       )}
     </div>
